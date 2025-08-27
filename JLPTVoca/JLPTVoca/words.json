@@ -1,0 +1,252 @@
+[
+    {
+        "japanese": [{
+            "text":"食","furigana":"た"
+        },{
+            "text":"べます","furigana":null
+        }],
+        "korean": "먹습니다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"父親","furigana":"ちちおや"
+        }],
+        "korean": "아버지",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"図","furigana":"と"
+        },{
+            "text":"書","furigana":"しょ"
+        },{
+            "text":"館","furigana":"かん"
+        }],
+        "korean": "도서관",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"テレビ","furigana":null
+        }],
+        "korean": "텔레비전",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"私","furigana":"わたし"
+        },{
+            "text":"は","furigana":null
+        },{
+            "text":"韓国人","furigana":"かんこくじん"
+        },{
+            "text":"です","furigana":null
+        }],
+        "korean": "저는 한국인입니다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"会社員","furigana":"かいしゃいん"
+        }],
+        "korean": "회사원",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"働","furigana":"はたら"
+        },{
+            "text":"きます","furigana":null
+        }],
+        "korean": "일합니다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"美","furigana":"うつく"
+        },{
+            "text":"しい","furigana":null
+        }],
+        "korean": "아름답다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"日本語","furigana":"にほんご"
+        },{
+            "text":"能力","furigana":"のうりょく"
+        },{
+            "text":"試験","furigana":"しけん"
+        }],
+        "korean": "일본어 능력 시험",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"空港","furigana":"くうこう"
+        }],
+        "korean": "공항",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"ドキドキ","furigana":null
+        }],
+        "korean": "두근두근",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"会議","furigana":"かいぎ"
+        },{
+            "text":"室","furigana":"しつ"
+        }],
+        "korean": "회의실",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"待","furigana":"ま"
+        },{
+            "text":"ち合わせる","furigana":null
+        }],
+        "korean": "만나기로 약속하고 기다리다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"召","furigana":"め"
+        },{
+            "text":"し上","furigana":"あ"
+        },{
+            "text":"がる","furigana":null
+        }],
+        "korean": "드시다 (높임말)",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"申","furigana":"もう"
+        },{
+            "text":"し訳","furigana":"わけ"
+        },{
+            "text":"ありません","furigana":null
+        }],
+        "korean": "죄송합니다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"天気予報","furigana":"てんきよほう"
+        }],
+        "korean": "일기예보",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"寿司","furigana":"すし"
+        }],
+        "korean": "초밥",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"嬉","furigana":"うれ"
+        },{
+            "text":"しい","furigana":null
+        }],
+        "korean": "기쁘다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"新幹線","furigana":"しんかんせん"
+        }],
+        "korean": "신칸센",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"一昨日","furigana":"おととい"
+        }],
+        "korean": "그저께",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"左","furigana":"ひだり"
+        },{
+            "text":"右","furigana":"みぎ"
+        }],
+        "korean": "좌우",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"薔薇","furigana":"ばら"
+        }],
+        "korean": "장미",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"お疲","furigana":"つか"
+        },{
+            "text":"れ様","furigana":"さま"
+        },{
+            "text":"でした","furigana":null
+        }],
+        "korean": "수고하셨습니다",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"三百","furigana":"さんびゃく"
+        }],
+        "korean": "삼백",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"祖父母","furigana":"そふぼ"
+        }],
+        "korean": "조부모",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"教科書","furigana":"きょうかしょ"
+        }],
+        "korean": "교과서",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"御社","furigana":"おんしゃ"
+        }],
+        "korean": "귀사",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"地震","furigana":"じしん"
+        }],
+        "korean": "지진",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"病院","furigana":"びょういん"
+        }],
+        "korean": "병원",
+        "jlptLevel": 2
+    },
+    {
+        "japanese": [{
+            "text":"自動詞","furigana":"じどうし"
+        }],
+        "korean": "자동사",
+        "jlptLevel": 2
+    }
+]
