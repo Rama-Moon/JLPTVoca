@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
 struct JLPTVocaApp: App {
@@ -13,5 +14,13 @@ struct JLPTVocaApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: Word.self, onSetup: { result in
+            switch result {
+            case .success(let container):
+                DataLoader.loadInitialData(context: container.mainContext)
+            case .failure(let error):
+                fatalError("\(error.localizedDescription)")
+            }
+        })
     }
 }
