@@ -13,17 +13,17 @@ struct WordStudyView: View {
     
     var body: some View {
         ZStack {
-            ForEach(wordManager.dailyWordDeck) { word in
+            ForEach(wordManager.wordDeck) { word in
                 WordCardView(
                     id: word.id,
                     japanese: word.plainJapanese,
                     korean: word.korean
-                ) { id, direction in
-                    if direction == .left {
-                        wordManager.onSwipeLeft(id: id)
-                    } else {
-                        wordManager.onSwipeRight(id: id)
-                    }
+                ) {
+                    id, direction in
+                    wordManager.onCardSwipe(
+                        id: id,
+                        direction: direction
+                    )
                 }
             }
         }

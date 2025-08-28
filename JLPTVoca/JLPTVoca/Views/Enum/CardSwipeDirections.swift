@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum CardSwipeDirections {
+enum CardSwipeDirection {
     case left
     case right
 }
 
 typealias CardSwipe = (
     _ id: UUID,
-    _ direction: CardSwipeDirections
+    _ direction: CardSwipeDirection
 ) -> Void

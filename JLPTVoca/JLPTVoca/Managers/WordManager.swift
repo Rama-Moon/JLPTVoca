@@ -12,21 +12,44 @@ import SwiftData
 @Observable
 final class WordManager {
     var allWords: [Word] = []
-    var dailyWordDeck: [Word] = []
+    var wordDeck: [Word] = []
     
     private var context: ModelContext?
     
-    func setup(context: ModelContext, words: [Word]) {
+    func setup(
+        context: ModelContext,
+        words: [Word]
+    ) {
         self.context = context
         self.allWords = words
-        self.dailyWordDeck = words
     }
     
-    func onSwipeLeft(id: UUID) {
-        print("memorized")
+    func prepareSession() {
+        self.wordDeck = allWords
     }
     
-    func onSwipeRight(id: UUID) {
-        print("unknown")
+    func onCardSwipe(
+        id: UUID,
+        direction: CardSwipeDirection
+    ) {
+        guard let swipedWord = allWords.first(where: { $0.id == id }) else {
+            return
+        }
+
+        if direction == .left {
+            swipedWord.maturityState += 1
+        } else {
+            swipedWord.maturityState = 1
+        }
+
+        wordDeck.removeAll { $0.id == id }
+
+        if wordDeck.isEmpty {
+            do {
+                try context?.save()
+            } catch {
+                print("@Log - \(error.localizedDescription)")
+            }
+        }
     }
 }
