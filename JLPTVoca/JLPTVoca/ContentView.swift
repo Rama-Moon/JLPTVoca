@@ -6,16 +6,37 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    @Query private var words: [Word]
+    @Environment(\.modelContext) private var context
+    @State private var wordManager = WordManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        TabView {
+            HomeView()
+                .tabItem {
+                    Label("학습", systemImage: "house.fill")
+                }
+            
+            DictionaryView()
+                .tabItem {
+                    Label("사전", systemImage: "book.fill")
+                }
+            
+            SettingView()
+                .tabItem {
+                    Label("설정", systemImage: "gearshape.fill")
+                }
         }
-        .padding()
+        .environment(wordManager)
+        .task(id: words) {
+            wordManager.setup(
+                context: context,
+                words: words
+            )
+        }
     }
 }
 
