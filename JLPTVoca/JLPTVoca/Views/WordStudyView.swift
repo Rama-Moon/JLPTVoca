@@ -9,38 +9,24 @@ import SwiftData
 import SwiftUI
 
 struct WordStudyView: View {
-    @Query(filter: #Predicate<Word> { word in
-        word.jlptLevel == 2
-    }) private var words: [Word]
+    @Environment(WordManager.self) private var wordManager
     
     var body: some View {
         ZStack {
-            ForEach(words) { word in
+            ForEach(wordManager.dailyWordDeck) { word in
                 WordCardView(
                     id: word.id,
                     japanese: word.plainJapanese,
                     korean: word.korean
                 ) { id, direction in
                     if direction == .left {
-                        onSwipeLeft()
+                        wordManager.onSwipeLeft(id: id)
                     } else {
-                        onSwipeRight()
+                        wordManager.onSwipeRight(id: id)
                     }
                 }
             }
         }
-    }
-}
-
-extension WordStudyView {
-    func onSwipeLeft() {
-        //TODO: 외웠을 때 액션
-        print("memorized")
-    }
-    
-    func onSwipeRight() {
-        //TODO: 외웠을 때 액션
-        print("unknown")
     }
 }
 

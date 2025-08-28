@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(WordManager.self) private var wordManager
+    
     var body: some View {
-        Text("HomeView")
+        Text("Home View")
     }
 }
 
 #Preview {
     HomeView()
+        .environment(WordManager())
 }
