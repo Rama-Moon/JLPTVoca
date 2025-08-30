@@ -1,134 +1,115 @@
- name: Archive Worklog to Notion
-     2
-     3 on:
-     4   push:
-     5     branches:
-     6       - main # main 브랜치에 push 될 때만 실행합니다. 필요시 다른
-       브랜치로 변경하세요.
-     7
-     8 jobs:
-     9   archive:
-    10     runs-on: ubuntu-latest
-    11     steps:
-    12       - name: Checkout code
-    13         uses: actions/checkout@v4
-    14         with:
-    15           fetch-depth: 0 # 모든 커밋 히스토리를 가져오기 위해
-       필요합니다.
-    16
-    17       - name: Set up Python
-    18         uses: actions/setup-python@v4
-    19         with:
-    20           python-version: '3.10'
-    21
-    22       - name: Install dependencies
-    23         run: pip install requests
-    24
-    25       - name: Process commits and send to Notion
-    26         env:
-    27           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
-    28           NOTION_DATABASE_ID: "25f0778f-fac8-802e-8444-c1a490714fd8"
-    29           GITHUB_REPOSITORY: ${{ github.repository }}
-    30         run: |
-    31           import os
-    32           import requests
-    33           import json
-    34           import subprocess
-    35
-    36           api_key = os.getenv('NOTION_API_KEY')
-    37           db_id = os.getenv('NOTION_DATABASE_ID')
-    38           repo_name = os.getenv('GITHUB_REPOSITORY')
-    39
-    40           commits = json.loads('''${{ toJSON(github.event.commits)
-       }}''')
-    41
-    42           headers = {
-    43               "Authorization": f"Bearer {api_key}",
-    44               "Content-Type": "application/json",
-    45               "Notion-Version": "2022-06-28"
-    46           }
-    47
-    48           for commit in commits:
-    49               commit_sha = commit['id']
-    50               commit_message_full = commit['message']
-    51               commit_title = commit_message_full.split('\n')[0]
-    52               author_name = commit['author']['name']
-    53               commit_timestamp = commit['timestamp']
-    54
-    55               # 1. 속성값으로 페이지 생성
-    56               page_data = {
-    57                   "parent": {"database_id": db_id},
-    58                   "properties": {
-    59                       "Commit": {"title": [{"text": {"content":
-       commit_title}}]},
-    60                       "SHA": {"rich_text": [{"text": {"content":
-       commit_sha}}]},
-    61                       "Project": {"select": {"name": repo_name}},
-    62                       "Date": {"date": {"start": commit_timestamp}}
-    63                   }
-    64               }
-    65
-    66               create_response =
-       requests.post("https://api.notion.com/v1/pages", headers=headers,
-       json=page_data)
-    67
-    68               if create_response.status_code != 200:
-    69                   print(f"Failed to create page for commit {commit_sha[
-       :7]}.")
-    70                   print(create_response.text)
-    71                   continue
-    72
-    73               new_page_id = create_response.json()['id']
-    74               print(f"Successfully created page for commit {commit_sha[
-       :7]}. Page ID: {new_page_id}")
-    75
-    76               # 2. 생성된 페이지에 콘텐츠(블록) 추가
-    77               code_diff = subprocess.run(['git', 'show', commit_sha],
-       capture_output=True, text=True).stdout
-    78               if len(code_diff) > 1990:
-    79                   code_diff = code_diff[:1990] + "\n..."
-    80
-    81               blocks_data = {
-    82                   "children": [
-    83                       {
-    84                           "object": "block",
-    85                           "type": "heading_2",
-    86                           "heading_2": {"rich_text": [{"type": "text",
-       "text": {"content": "Commit Message"}}]}
-    87                       },
-    88                       {
-    89                           "object": "block",
-    90                           "type": "paragraph",
-    91                           "paragraph": {"rich_text": [{"type": "text",
-       "text": {"content": commit_message_full}}]}
-    92                       },
-    93                       {
-    94                           "object": "block",
-    95                           "type": "heading_2",
-    96                           "heading_2": {"rich_text": [{"type": "text",
-       "text": {"content": "Code Diff"}}]}
-    97                       },
-    98                       {
-    99                           "object": "block",
-   100                           "type": "code",
-   101                           "code": {
-   102                               "rich_text": [{"type": "text", "text": {
-       "content": code_diff}}],
-   103                               "language": "diff"
-   104                           }
-   105                       }
-   106                   ]
-   107               }
-   108
-   109               append_response =
-       requests.patch(f"https://api.notion.com/v1/blocks/{new_page_id}/childre
-       n", headers=headers, json=blocks_data)
-   110
-   111               if append_response.status_code == 200:
-   112                   print(f"Successfully appended content to page {
-       new_page_id}.")
-   113               else:
-   114                   print(f"Failed to append content to page {new_page_id
-       }.")
-   115                   print(append_response.text)
+name: Archive Worklog to Notion
 
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  archive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Process commits and send to Notion
+        env:
+          NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+          NOTION_DATABASE_ID: "25f0778f-fac8-802e-8444-c1a490714fd8"
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: |
+          import os
+          import requests
+          import json
+          import subprocess
+
+          api_key = os.getenv('NOTION_API_KEY')
+          db_id = os.getenv('NOTION_DATABASE_ID')
+          repo_name = os.getenv('GITHUB_REPOSITORY')
+          
+          commits = json.loads('''${{ toJSON(github.event.commits) }}''')
+
+          headers = {
+              "Authorization": f"Bearer {api_key}",
+              "Content-Type": "application/json",
+              "Notion-Version": "2022-06-28"
+          }
+
+          for commit in commits:
+              commit_sha = commit['id']
+              commit_message_full = commit['message']
+              commit_title = commit_message_full.split('\n')[0]
+              author_name = commit['author']['name']
+              commit_timestamp = commit['timestamp']
+
+              # 1. 속성값으로 페이지 생성
+              page_data = {
+                  "parent": {"database_id": db_id},
+                  "properties": {
+                      "Commit": {"title": [{"text": {"content": commit_title}}]},
+                      "SHA": {"rich_text": [{"text": {"content": commit_sha}}]},
+                      "Project": {"select": {"name": repo_name}},
+                      "Date": {"date": {"start": commit_timestamp}}
+                  }
+              }
+              
+              create_response = requests.post("https://api.notion.com/v1/pages", headers=headers, json=page_data)
+              
+              if create_response.status_code != 200:
+                  print(f"Failed to create page for commit {commit_sha[:7]}.")
+                  print(create_response.text)
+                  continue
+
+              new_page_id = create_response.json()['id']
+              print(f"Successfully created page for commit {commit_sha[:7]}. Page ID: {new_page_id}")
+
+              # 2. 생성된 페이지에 콘텐츠(블록) 추가
+              code_diff = subprocess.run(['git', 'show', commit_sha], capture_output=True, text=True).stdout
+              if len(code_diff) > 1990:
+                  code_diff = code_diff[:1990] + "\n..."
+
+              blocks_data = {
+                  "children": [
+                      {
+                          "object": "block",
+                          "type": "heading_2",
+                          "heading_2": {"rich_text": [{"type": "text", "text": {"content": "Commit Message"}}]}
+                      },
+                      {
+                          "object": "block",
+                          "type": "paragraph",
+                          "paragraph": {"rich_text": [{"type": "text", "text": {"content": commit_message_full}}]}
+                      },
+                      {
+                          "object": "block",
+                          "type": "heading_2",
+                          "heading_2": {"rich_text": [{"type": "text", "text": {"content": "Code Diff"}}]}
+                      },
+                      {
+                          "object": "block",
+                          "type": "code",
+                          "code": {
+                              "rich_text": [{"type": "text", "text": {"content": code_diff}}],
+                              "language": "diff"
+                          }
+                      }
+                  ]
+              }
+
+              append_response = requests.patch(f"https://api.notion.com/v1/blocks/{new_page_id}/children", headers=headers, json=blocks_data)
+
+              if append_response.status_code == 200:
+                  print(f"Successfully appended content to page {new_page_id}.")
+              else:
+                  print(f"Failed to append content to page {new_page_id}.")
+                  print(append_response.text)
