@@ -35,7 +35,7 @@ struct HomeView: View {
                         .cornerRadius(10)
                 }
             }
-            .navigationTitle("홈")
+            .navigationTitle("JLPT-VOCA")
         }
     }
 }
