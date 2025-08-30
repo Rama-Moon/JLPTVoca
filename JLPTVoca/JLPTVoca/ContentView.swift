@@ -25,9 +25,9 @@ struct ContentView: View {
                     Label("사전", systemImage: "book.fill")
                 }
             
-            SettingView()
+            DictionaryView()
                 .tabItem {
-                    Label("설정", systemImage: "gearshape.fill")
+                    Label("전체 사전", systemImage: "book.fill")
                 }
         }
         .environment(wordManager)
