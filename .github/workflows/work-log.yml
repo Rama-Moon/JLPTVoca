@@ -27,6 +27,7 @@ jobs:
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: "25f0778f-fac8-802e-8444-c1a490714fd8"
           GITHUB_REPOSITORY: ${{ github.repository }}
+        shell: python
         run: |
           import os
           import requests
