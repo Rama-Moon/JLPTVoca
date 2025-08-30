@@ -21,7 +21,7 @@ struct DictionaryView: View {
                         .foregroundStyle(.secondary)
                 }
             }
-            .navigationTitle("사전")
+            .navigationTitle("JLPT Dictionary")
         }
     }
 }
