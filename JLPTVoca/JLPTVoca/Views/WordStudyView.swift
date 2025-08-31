@@ -34,7 +34,7 @@ struct WordStudyView: View {
             actions: {
                 alertButtons
             }, message: {
-                Text("7년 연습생 하고 집에 갈래?")
+                Text("7년 연습생 하고 집에 갈래?") //TODO: RawVal 수정
             })
         .onChange(of: wordManager.wordDeck) { _, newDeck in
             if newDeck.isEmpty {

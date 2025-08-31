@@ -33,6 +33,8 @@ struct WordCardView: View {
         let drag = DragGesture()
             .onChanged { offset = $0.translation }
             .onEnded {
+                HapticManager.instance.notification(type: .success)
+                
                 if $0.translation.width < -100 { //TODO: RawVal 수정
                     offset = .init(width: -1000, height: 0)
                     swiped(id, .left)
