@@ -13,20 +13,34 @@ struct WordStudyView: View {
     @Environment(NavigationManager<HomeRoute>.self) private var router
     
     @State private var showAlert = false
+    @State private var showCompletionModal = false
     
     var body: some View {
-        wordDeckView()
-            .navigationBarBackButtonHidden(true)
-            .toolbar(.hidden, for: .tabBar)
-            .toolbar { customBackButton() }
-            .alert(
-                "학습 종료",
-                isPresented: $showAlert,
-                actions: {
-                    alertButtons
-                }, message: {
-                    Text("7년 연습생 하고 집에 갈래?")
-                })
+        ZStack {
+            VStack {
+                wordDeckView()
+            }
+            
+            if showCompletionModal {
+                studyCompletionView()
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        .toolbar(.hidden, for: .tabBar)
+        .toolbar { customBackButton() }
+        .alert(
+            "학습 종료",
+            isPresented: $showAlert,
+            actions: {
+                alertButtons
+            }, message: {
+                Text("7년 연습생 하고 집에 갈래?")
+            })
+        .onChange(of: wordManager.wordDeck) { _, newDeck in
+            if newDeck.isEmpty {
+                showCompletionModal = true
+            }
+        }
     }
 }
 
@@ -49,6 +63,19 @@ extension WordStudyView {
         }
     }
     
+    private func studyCompletionView()-> some View {
+        ZStack {
+            Color.black.opacity(0.5)
+                .ignoresSafeArea()
+            
+            Button(action: {
+                router.path.removeLast()
+            }) {
+                Text("홈으로 돌아가기")
+            }
+        }
+    }
+    
     @ToolbarContentBuilder
     private func customBackButton() -> some ToolbarContent {
         ToolbarItem(placement: .navigationBarLeading) {
@@ -67,8 +94,4 @@ extension WordStudyView {
             router.pop()
         }
     }
-}
-
-#Preview {
-    WordStudyView()
 }
