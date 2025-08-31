@@ -39,7 +39,7 @@ final class WordManager {
         if direction == .left {
             swipedWord.maturityState += 1
         } else {
-            swipedWord.maturityState = 1
+            swipedWord.maturityState = 2
         }
 
         wordDeck.removeAll { $0.id == id }
