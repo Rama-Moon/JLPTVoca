@@ -9,22 +9,14 @@ import SwiftUI
 
 struct HomeView: View {
     @Environment(WordManager.self) private var wordManager
-    
-    @State private var isStudyViewActive = false
+    @State private var router = NavigationManager<HomeRoute>()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.path) {
             VStack(spacing: 20) {
-                NavigationLink(
-                    destination: WordStudyView(),
-                    isActive: $isStudyViewActive
-                ) {
-                    EmptyView()
-                }
-                
                 Button(action: {
                     wordManager.prepareSession()
-                    isStudyViewActive = true
+                    router.navigate(.wordStudy)
                 }) {
                     Text("단어 학습 시작")
                         .font(.title2)
@@ -36,7 +28,14 @@ struct HomeView: View {
                 }
             }
             .navigationTitle("JLPT-VOCA")
+            .navigationDestination(for: HomeRoute.self) { route in
+                switch route {
+                case .wordStudy:
+                    WordStudyView()
+                }
+            }
         }
+        .environment(router)
     }
 }
 
