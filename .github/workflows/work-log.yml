@@ -76,10 +76,11 @@ jobs:
               page_data = {
                   "parent": {"database_id": db_id},
                   "properties": {
-                      "Commit": {"title": [{"text": {"content": f"[PR #{pr_number}] {commit_title}"}}]},
+                      "Commit": {"title": [{"text": {"content": commit_title}}]},
                       "SHA": {"rich_text": [{"text": {"content": sha}}]},
                       "Project": {"select": {"name": repo_name}},
-                      "Date": {"date": {"start": commit_timestamp}}
+                      "Date": {"date": {"start": commit_timestamp}},
+                      "PR-Num": {"number": int(pr_number)}
                   }
               }
               
