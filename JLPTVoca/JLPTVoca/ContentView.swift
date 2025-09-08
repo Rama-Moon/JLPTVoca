@@ -31,15 +31,8 @@ struct ContentView: View {
                 }
         }
         .environment(wordManager)
-        .task(id: words) {
-            wordManager.setup(
-                context: context,
-                words: words
-            )
+        .task() {
+            wordManager.prepareSession()
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
