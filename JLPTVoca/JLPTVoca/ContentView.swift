@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @Query private var words: [Word]
     @Environment(\.modelContext) private var context
     @State private var wordManager = WordManager()
     
@@ -30,8 +31,11 @@ struct ContentView: View {
                 }
         }
         .environment(wordManager)
-        .task() {
-            wordManager.setContext(context: context)
+        .task(id: words) {
+            wordManager.setup(
+                context: context,
+                words: words
+            )
         }
     }
 }

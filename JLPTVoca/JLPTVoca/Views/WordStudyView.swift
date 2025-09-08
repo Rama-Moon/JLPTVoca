@@ -36,7 +36,7 @@ struct WordStudyView: View {
             }, message: {
                 Text("7년 연습생 하고 집에 갈래?") //TODO: RawVal 수정
             })
-        .onChange(of: wordManager.studyStateDeck) { _, newDeck in
+        .onChange(of: wordManager.wordDeck) { _, newDeck in
             if newDeck.isEmpty {
                 showCompletionModal = true
             }
@@ -47,11 +47,11 @@ struct WordStudyView: View {
 extension WordStudyView {
     private func wordDeckView() -> some View {
         ZStack {
-            ForEach(wordManager.studyStateDeck) { state in
+            ForEach(wordManager.wordDeck) { word in
                 WordCardView(
-                    id: state.word.id,
-                    japanese: state.word.plainJapanese,
-                    korean: state.word.korean
+                    id: word.id,
+                    japanese: word.plainJapanese,
+                    korean: word.korean
                 ) {
                     id, direction in
                     wordManager.onCardSwipe(
