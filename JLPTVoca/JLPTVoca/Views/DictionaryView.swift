@@ -12,11 +12,11 @@ struct DictionaryView: View {
     
     var body: some View {
         NavigationStack {
-            List(wordManager.allWords) { word in
+            List(wordManager.studyStateDeck) { state in
                 VStack(alignment: .leading) {
-                    Text(word.plainJapanese)
+                    Text(state.word.plainJapanese)
                         .font(.headline)
-                    Text(word.korean)
+                    Text(state.word.korean)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
                 }
