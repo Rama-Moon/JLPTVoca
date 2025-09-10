@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		216132B72E71D3C300DE17B7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 214FEB582E5E320300C87957 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 214FEB5F2E5E320300C87957;
+			remoteInfo = JLPTVoca;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		214FEB602E5E320300C87957 /* JLPTVoca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JLPTVoca.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		216132B32E71D3C300DE17B7 /* JLPTVocaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLPTVocaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = JLPTVoca;
 			sourceTree = "<group>";
 		};
+		216132B42E71D3C300DE17B7 /* JLPTVocaUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = JLPTVocaUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		214FEB5D2E5E320300C87957 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216132B02E71D3C300DE17B7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				214FEB622E5E320300C87957 /* JLPTVoca */,
+				216132B42E71D3C300DE17B7 /* JLPTVocaUITests */,
 				214FEB612E5E320300C87957 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				214FEB602E5E320300C87957 /* JLPTVoca.app */,
+				216132B32E71D3C300DE17B7 /* JLPTVocaUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 214FEB602E5E320300C87957 /* JLPTVoca.app */;
 			productType = "com.apple.product-type.application";
 		};
+		216132B22E71D3C300DE17B7 /* JLPTVocaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 216132B92E71D3C300DE17B7 /* Build configuration list for PBXNativeTarget "JLPTVocaUITests" */;
+			buildPhases = (
+				216132AF2E71D3C300DE17B7 /* Sources */,
+				216132B02E71D3C300DE17B7 /* Frameworks */,
+				216132B12E71D3C300DE17B7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				216132B82E71D3C300DE17B7 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				216132B42E71D3C300DE17B7 /* JLPTVocaUITests */,
+			);
+			name = JLPTVocaUITests;
+			packageProductDependencies = (
+			);
+			productName = JLPTVocaUITests;
+			productReference = 216132B32E71D3C300DE17B7 /* JLPTVocaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					214FEB5F2E5E320300C87957 = {
 						CreatedOnToolsVersion = 16.4;
+					};
+					216132B22E71D3C300DE17B7 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 214FEB5F2E5E320300C87957;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				214FEB5F2E5E320300C87957 /* JLPTVoca */,
+				216132B22E71D3C300DE17B7 /* JLPTVocaUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		214FEB5E2E5E320300C87957 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		216132B12E71D3C300DE17B7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		216132AF2E71D3C300DE17B7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		216132B82E71D3C300DE17B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 214FEB5F2E5E320300C87957 /* JLPTVoca */;
+			targetProxy = 216132B72E71D3C300DE17B7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		214FEB692E5E320400C87957 /* Debug */ = {
@@ -302,6 +377,42 @@
 			};
 			name = Release;
 		};
+		216132BA2E71D3C300DE17B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3HYFT54PK2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JLPTVocaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLPTVoca.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JLPTVoca";
+			};
+			name = Debug;
+		};
+		216132BB2E71D3C300DE17B7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3HYFT54PK2;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.JLPTVocaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JLPTVoca.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/JLPTVoca";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -319,6 +430,15 @@
 			buildConfigurations = (
 				214FEB6C2E5E320400C87957 /* Debug */,
 				214FEB6D2E5E320400C87957 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		216132B92E71D3C300DE17B7 /* Build configuration list for PBXNativeTarget "JLPTVocaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				216132BA2E71D3C300DE17B7 /* Debug */,
+				216132BB2E71D3C300DE17B7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
