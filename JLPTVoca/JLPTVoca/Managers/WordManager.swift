@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import OSLog
 
 @Observable
 final class WordManager {
@@ -79,7 +80,6 @@ final class WordManager {
             swipedState.maturityState = 1
         }
         updateNextReviewDate(for: swipedState)
-        
         studyStateDeck.removeAll { $0.word.id == id }
         
         if studyStateDeck.isEmpty {

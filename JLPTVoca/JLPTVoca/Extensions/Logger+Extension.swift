@@ -5,14 +5,10 @@
 //  Created by Rama on 9/9/25.
 //
 
-import SwiftUI
+import Foundation
+import OSLog
 
-struct Logger_Extension: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    Logger_Extension()
+extension Logger {
+    private static var subsystem = Bundle.main.bundleIdentifier!
+    static let word = Logger(subsystem: subsystem, category: "Word")
 }

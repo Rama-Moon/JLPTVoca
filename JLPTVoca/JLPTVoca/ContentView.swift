@@ -31,8 +31,8 @@ struct ContentView: View {
                 }
         }
         .environment(wordManager)
-        .task() {
-            wordManager.prepareSession()
+        .onAppear() {
+            wordManager.setContext(context: context)
         }
     }
 }
