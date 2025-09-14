@@ -25,6 +25,7 @@ extension Color {
     static let sedano = Color(hex: "8FBAFF")
     
     static let white0 = Color(hex: "FFFFFF")
+    static let white40 = Color(hex: "FFFFFF").opacity(0.4)
     static let black5 = Color(hex: "F3F3F3")
     static let black10 = Color(hex: "F3F3F3")
     static let black20 = Color(hex: "EBEBEB")

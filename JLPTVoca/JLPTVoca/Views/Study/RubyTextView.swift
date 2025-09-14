@@ -10,21 +10,22 @@ import SwiftUI
 
 struct RubyTextView: View {
     let rubyTexts: [RubyText]
-
+    
     var body: some View {
-        HStack(alignment: .bottom, spacing: 0) {
+        VStack(spacing: 10) {
             ForEach(rubyTexts, id: \.self) { rubyText in
                 if let furigana = rubyText.furigana {
-                    VStack(spacing: 2) {
-                        Text(furigana)
-                            .font(.caption)
-                        Text(rubyText.text)
-                            .font(.title)
-                    }
-                    .padding(.horizontal, 1)
+                    Text(furigana)
+                        .font(.wdl)
+                        .foregroundStyle(Color.black100)
+                    
+                    Text(rubyText.text)
+                        .font(.wd)
+                        .foregroundStyle(Color.black100)
                 } else {
                     Text(rubyText.text)
-                        .font(.title)
+                        .font(.wd)
+                        .foregroundStyle(Color.black100)
                 }
             }
         }
