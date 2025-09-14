@@ -12,8 +12,10 @@ struct HomeView: View {
     @State private var router = NavigationManager<HomeRoute>()
     
     @State private var selectedLevel: Int = 3
-    @State private var isLevelSelectorExpanded: Bool = false
-    @State private var isDetailChartEnabled: Bool = false
+    @State private var pendingLevel: Int?
+    @State private var isLevelSelectorExpanded = false
+    @State private var isDetailChartEnabled = false
+    @State private var isAlertPresented = false
     
     var body: some View {
         NavigationStack(path: $router.path) {
@@ -56,11 +58,34 @@ struct HomeView: View {
                 VStack {
                     LevelSelectorView(
                         selectedLevel: $selectedLevel,
-                        isLevelSelectorExpanded: $isLevelSelectorExpanded
+                        isLevelSelectorExpanded: $isLevelSelectorExpanded,
+                        onLevelSelected: { level in
+                            if level != selectedLevel {
+                                self.pendingLevel = level
+                                self.isAlertPresented = true
+                            } else {
+                                withAnimation {
+                                    isLevelSelectorExpanded = false
+                                }
+                            }
+                        }
                     )
                     
                     Spacer()
                 }
+            }
+            .alert("레벨을 변경할까요?", isPresented: $isAlertPresented) {
+                Button("돌아가기", role: .cancel) { }
+                Button("변경하기") {
+                    if let newLevel = pendingLevel {
+                        selectedLevel = newLevel
+                    }
+                    withAnimation {
+                        isLevelSelectorExpanded = false
+                    }
+                }
+            } message: {
+                Text("진행 중인 학습 내용은 그대로 유지돼요!")
             }
             .navigationDestination(for: HomeRoute.self) { route in
                 switch route {

@@ -11,6 +11,8 @@ struct LevelSelectorView: View {
     @Binding var selectedLevel: Int
     @Binding var isLevelSelectorExpanded: Bool
     
+    let onLevelSelected: (Int) -> Void
+    
     var body: some View {
         VStack {
             levelDropdownButton()
@@ -47,10 +49,7 @@ struct LevelSelectorView: View {
         HStack {
             ForEach((1...5).reversed(), id: \.self) { level in
                 Button(action: {
-                    selectedLevel = level
-                    withAnimation {
-                        isLevelSelectorExpanded = false
-                    }
+                    onLevelSelected(level)
                 }) {
                     Text("N\(level)")
                         .font(.b2)
@@ -84,10 +83,4 @@ struct LevelSelectorView: View {
             )
         )
     }
-}
-
-#Preview {
-    @Previewable @State var selectedLevel = 3
-    @Previewable @State var isExpanded = false
-    return LevelSelectorView(selectedLevel: $selectedLevel, isLevelSelectorExpanded: $isExpanded)
 }
