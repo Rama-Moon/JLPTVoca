@@ -10,7 +10,6 @@ import SwiftUI
 struct CircularProgressView: View {
     let current: Int
     let total: Int
-    var lineWidth: CGFloat = 12
     
     var body: some View {
         var progress: Double { Double(current) / Double(total) }
@@ -18,13 +17,17 @@ struct CircularProgressView: View {
         
         ZStack {
             Circle()
-                .stroke(Color.gray.opacity(0.2), lineWidth: lineWidth)
+                .stroke(
+                    Color.gray.opacity(0.2),
+                    lineWidth: 12
+                )
             
             Circle()
                 .trim(from: 0, to: progress)
                 .stroke(
                     Color.coral50,
-                    style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
+                    style: StrokeStyle(
+                        lineWidth: 12, lineCap: .round)
                 )
                 .rotationEffect(.degrees(-90))
             

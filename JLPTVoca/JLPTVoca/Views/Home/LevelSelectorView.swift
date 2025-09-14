@@ -67,13 +67,18 @@ struct LevelSelectorView: View {
                 )
             }
         }
-        .frame(width: .infinity, height: 90)
+        .frame(
+            width: .infinity,
+            height: 90
+        )
         .transition(
             .asymmetric(
                 insertion: .scale(
                     scale: 0.95,
                     anchor: .top
-                ).combined(with: .opacity),
+                ).combined(
+                    with: .opacity
+                ),
                 removal: .opacity.combined(
                     with: .scale(
                         scale: 0.95,

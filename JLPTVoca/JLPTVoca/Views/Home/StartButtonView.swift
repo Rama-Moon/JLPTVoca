@@ -19,7 +19,10 @@ struct StartButtonView: View {
             HStack {
                 Image(.bookIcon)
                     .resizable()
-                    .frame(width: 27, height: 27)
+                    .frame(
+                        width: 27,
+                        height: 27
+                    )
                 
                 Text("단어 외우러 가기")
                     .font(.h1)

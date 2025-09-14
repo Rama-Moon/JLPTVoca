@@ -14,7 +14,7 @@ struct ChartToggleButton: View {
         Button(action: {
             isDetailChartEnabled.toggle()
         }){
-            Text(isDetailChartEnabled ? "세부 차트 ON" : "세부 차트 OFF")
+            Text(isDetailChartEnabled ? DetailChart.on : DetailChart.off)
                 .font(.btn2)
                 .foregroundStyle(isDetailChartEnabled ? Color.white : Color.black50)
                 .padding(.horizontal, 10)

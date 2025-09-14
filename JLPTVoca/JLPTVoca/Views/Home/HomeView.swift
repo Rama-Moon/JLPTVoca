@@ -74,9 +74,9 @@ struct HomeView: View {
                     Spacer()
                 }
             }
-            .alert("레벨을 변경할까요?", isPresented: $isAlertPresented) {
-                Button("돌아가기", role: .cancel) { }
-                Button("변경하기") {
+            .alert("\(LevelAlert.title)", isPresented: $isAlertPresented) {
+                Button("\(LevelAlert.cancel)", role: .cancel) { }
+                Button("\(LevelAlert.confirm)") {
                     if let newLevel = pendingLevel {
                         selectedLevel = newLevel
                     }
@@ -85,7 +85,7 @@ struct HomeView: View {
                     }
                 }
             } message: {
-                Text("진행 중인 학습 내용은 그대로 유지돼요!")
+                Text("\(LevelAlert.message)")
             }
             .navigationDestination(for: HomeRoute.self) { route in
                 switch route {
