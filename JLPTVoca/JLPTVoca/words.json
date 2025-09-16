@@ -6,14 +6,18 @@
             "text":"べます","furigana":null
         }],
         "korean": "먹습니다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 아침을 먹습니다.",
+        "japaneseExample": "私は朝ご飯を食べます。"
     },
     {
         "japanese": [{
             "text":"父親","furigana":"ちちおや"
         }],
         "korean": "아버지",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "우리 아버지는 회사원입니다.",
+        "japaneseExample": "私の父親は会社員です。"
     },
     {
         "japanese": [{
@@ -24,14 +28,18 @@
             "text":"館","furigana":"かん"
         }],
         "korean": "도서관",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "주말에 도서관에 갈 거예요.",
+        "japaneseExample": "週末に図書館へ行きます。"
     },
     {
         "japanese": [{
             "text":"テレビ","furigana":null
         }],
         "korean": "텔레비전",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 매일 밤 텔레비전을 봅니다.",
+        "japaneseExample": "私は毎晩テレビを見ます。"
     },
     {
         "japanese": [{
@@ -44,14 +52,18 @@
             "text":"です","furigana":null
         }],
         "korean": "저는 한국인입니다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "네, 저는 한국인입니다.",
+        "japaneseExample": "はい、私は韓国人です。"
     },
     {
         "japanese": [{
             "text":"会社員","furigana":"かいしゃいん"
         }],
         "korean": "회사원",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "그는 평범한 회사원입니다.",
+        "japaneseExample": "彼は普通の会社員です。"
     },
     {
         "japanese": [{
@@ -60,7 +72,9 @@
             "text":"きます","furigana":null
         }],
         "korean": "일합니다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 은행에서 일합니다.",
+        "japaneseExample": "私は銀行で働きます。"
     },
     {
         "japanese": [{
@@ -69,7 +83,9 @@
             "text":"しい","furigana":null
         }],
         "korean": "아름답다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "이 꽃은 정말 아름답다.",
+        "japaneseExample": "この花は本当に美しい。"
     },
     {
         "japanese": [{
@@ -80,21 +96,27 @@
             "text":"試験","furigana":"しけん"
         }],
         "korean": "일본어 능력 시험",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 일본어 능력 시험을 준비하고 있습니다.",
+        "japaneseExample": "私は日本語能力試験を準備しています。"
     },
     {
         "japanese": [{
             "text":"空港","furigana":"くうこう"
         }],
         "korean": "공항",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "우리는 공항으로 서둘러 갔다.",
+        "japaneseExample": "私たちは空港へ急いだ。"
     },
     {
         "japanese": [{
             "text":"ドキドキ","furigana":null
         }],
         "korean": "두근두근",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "발표를 앞두고 가슴이 두근두근거렸다.",
+        "japaneseExample": "発表を前に胸がドキドキした。"
     },
     {
         "japanese": [{
@@ -103,7 +125,9 @@
             "text":"室","furigana":"しつ"
         }],
         "korean": "회의실",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "회의실은 3층에 있습니다.",
+        "japaneseExample": "会議室は3階にあります。"
     },
     {
         "japanese": [{
@@ -112,7 +136,9 @@
             "text":"ち合わせる","furigana":null
         }],
         "korean": "만나기로 약속하고 기다리다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "우리는 역 앞에서 만나기로 약속했다.",
+        "japaneseExample": "私たちは駅前で待ち合わせることにした。"
     },
     {
         "japanese": [{
@@ -123,7 +149,9 @@
             "text":"がる","furigana":null
         }],
         "korean": "드시다 (높임말)",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "사장님, 점심 드시겠어요?",
+        "japaneseExample": "社長、昼食を召し上がりますか。"
     },
     {
         "japanese": [{
@@ -134,21 +162,27 @@
             "text":"ありません","furigana":null
         }],
         "korean": "죄송합니다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "늦어서 정말 죄송합니다.",
+        "japaneseExample": "遅れて誠に申し訳ありません。"
     },
     {
         "japanese": [{
             "text":"天気予報","furigana":"てんきよほう"
         }],
         "korean": "일기예보",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "일기예보에 따르면 내일은 비가 올 것입니다.",
+        "japaneseExample": "天気予報によると明日は雨が降るでしょう。"
     },
     {
         "japanese": [{
             "text":"寿司","furigana":"すし"
         }],
         "korean": "초밥",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 초밥을 아주 좋아합니다.",
+        "japaneseExample": "私は寿司が大好きです。"
     },
     {
         "japanese": [{
@@ -157,21 +191,27 @@
             "text":"しい","furigana":null
         }],
         "korean": "기쁘다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "선물을 받아서 정말 기쁘다.",
+        "japaneseExample": "プレゼントをもらって本当に嬉しい。"
     },
     {
         "japanese": [{
             "text":"新幹線","furigana":"しんかんせん"
         }],
         "korean": "신칸센",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 신칸센을 처음 타봤습니다.",
+        "japaneseExample": "私は新幹線に初めて乗りました。"
     },
     {
         "japanese": [{
             "text":"一昨日","furigana":"おととい"
         }],
         "korean": "그저께",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "그저께 친구를 만났어요.",
+        "japaneseExample": "一昨日、友達に会いました。"
     },
     {
         "japanese": [{
@@ -180,14 +220,18 @@
             "text":"右","furigana":"みぎ"
         }],
         "korean": "좌우",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "길을 건널 때는 좌우를 잘 살피세요.",
+        "japaneseExample": "道を渡る時は左右をよく見てください。"
     },
     {
         "japanese": [{
             "text":"薔薇","furigana":"ばら"
         }],
         "korean": "장미",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "그녀는 빨간 장미를 좋아한다.",
+        "japaneseExample": "彼女は赤い薔薇が好きだ。"
     },
     {
         "japanese": [{
@@ -198,55 +242,71 @@
             "text":"でした","furigana":null
         }],
         "korean": "수고하셨습니다",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "오늘 하루도 수고하셨습니다.",
+        "japaneseExample": "今日一日もお疲れ様でした。"
     },
     {
         "japanese": [{
             "text":"三百","furigana":"さんびゃく"
         }],
         "korean": "삼백",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "이 책은 삼백 페이지입니다.",
+        "japaneseExample": "この本は三百ページです。"
     },
     {
         "japanese": [{
             "text":"祖父母","furigana":"そふぼ"
         }],
         "korean": "조부모",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "저는 조부모님과 함께 살고 있습니다.",
+        "japaneseExample": "私は祖父母と一緒に住んでいます。"
     },
     {
         "japanese": [{
             "text":"教科書","furigana":"きょうかしょ"
         }],
         "korean": "교과서",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "교과서를 펴주세요.",
+        "japaneseExample": "教科書を開いてください。"
     },
     {
         "japanese": [{
             "text":"御社","furigana":"おんしゃ"
         }],
         "korean": "귀사",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "귀사의 발전을 기원합니다.",
+        "japaneseExample": "御社の発展をお祈り申し上げます。"
     },
     {
         "japanese": [{
             "text":"地震","furigana":"じしん"
         }],
         "korean": "지진",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "어젯밤에 지진이 있었습니다.",
+        "japaneseExample": "昨夜、地震がありました。"
     },
     {
         "japanese": [{
             "text":"病院","furigana":"びょういん"
         }],
         "korean": "병원",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "감기에 걸려서 병원에 갔습니다.",
+        "japaneseExample": "風邪をひいて病院へ行きました。"
     },
     {
         "japanese": [{
             "text":"自動詞","furigana":"じどうし"
         }],
         "korean": "자동사",
-        "jlptLevel": 2
+        "jlptLevel": 2,
+        "koreanExample": "'가다'는 대표적인 자동사입니다.",
+        "japaneseExample": "「行く」は代表的な自動詞です。"
     }
 ]
