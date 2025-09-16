@@ -20,29 +20,29 @@ struct WordStudyView: View {
             Color.coral50.ignoresSafeArea()
             
             VStack(spacing: 28) {
-                WordProgrssBar(
+                WordProgressBar(
                     current: 12,
                     total: 40
                 )
                 .padding(.horizontal, 24)
                 
-                wordDeckView()
+                WordDeckView()
                 
                 FilterButtons()
             }
             
             if showCompletionModal {
-                studyCompletionView()
+                StudyCompletionView()
             }
         }
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .tabBar)
-        .toolbar { customBackButton() }
+        .toolbar { CustomBackButton(showAlert: $showAlert) }
         .alert(
             "학습 종료",
             isPresented: $showAlert,
             actions: {
-                alertButtons
+                StudyAlertButtons()
             }, message: {
                 Text("7년 연습생 하고 집에 갈래?")
             })
@@ -50,65 +50,6 @@ struct WordStudyView: View {
             if newDeck.isEmpty {
                 showCompletionModal = true
             }
-        }
-    }
-}
-
-extension WordStudyView {
-    private func wordDeckView() -> some View {
-        ZStack {
-            ForEach(wordManager.studyStateDeck) { state in
-                WordCardView(
-                    id: state.word.id,
-                    japanese: state.word.plainJapanese,
-                    furigana: state.word.plainFurigana,
-                    korean: state.word.korean,
-                    koreanExample: state.word.koreanExample,
-                    japaneseExample: state.word.japaneseExample
-                ) {
-                    id, direction in
-                    wordManager.onCardSwipe(
-                        id: id,
-                        direction: direction
-                    )
-                }
-                .frame(
-                    width: 345,
-                    height: 553
-                )
-            }
-        }
-    }
-    
-    private func studyCompletionView()-> some View {
-        ZStack {
-            Color.black.opacity(0.5)
-                .ignoresSafeArea()
-            
-            Button(action: {
-                router.path.removeLast()
-            }) {
-                Text("홈으로 돌아가기")
-            }
-        }
-    }
-    
-    @ToolbarContentBuilder
-    private func customBackButton() -> some ToolbarContent {
-        ToolbarItem(placement: .navigationBarLeading) {
-            Button {
-                showAlert = true
-            } label: {
-                Image(systemName: "chevron.backward")
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var alertButtons: some View {
-        Button("취소", role: .cancel) { }
-        Button("종료", role: .destructive) {
-            router.pop()
         }
     }
 }

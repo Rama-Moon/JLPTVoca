@@ -1,5 +1,5 @@
 //
-//  WordProgrssBar.swift
+//  WordProgressBar.swift
 //  JLPTVoca
 //
 //  Created by Rama on 9/15/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WordProgrssBar: View {
+struct WordProgressBar: View {
     let current: Int
     let total: Int
     
