@@ -12,8 +12,7 @@ struct WordStudyView: View {
     @Environment(WordManager.self) private var wordManager
     @Environment(NavigationManager<HomeRoute>.self) private var router
     
-    @State private var showAlert = false
-    @State private var showCompletionModal = false
+    @State private var isPopupPresented: PopupType?
     
     var body: some View {
         ZStack {
@@ -31,24 +30,38 @@ struct WordStudyView: View {
                 FilterButtons()
             }
             
-            if showCompletionModal {
-                StudyCompletionView()
+            if let popupType = isPopupPresented {
+                StudyPopupView(
+                    isPresented: Binding(
+                        get: { isPopupPresented != nil },
+                        set: { if !$0 { isPopupPresented = nil } }
+                    ),
+                    popupType: popupType,
+                    completeAction: { router.pop() },
+                    cancelAction: popupType == .exitConfirmation ? { isPopupPresented = nil } : nil
+                )
             }
         }
+
         .navigationBarBackButtonHidden(true)
         .toolbar(.hidden, for: .tabBar)
-        .toolbar { CustomBackButton(showAlert: $showAlert) }
-        .alert(
-            "학습 종료",
-            isPresented: $showAlert,
-            actions: {
-                StudyAlertButtons()
-            }, message: {
-                Text("7년 연습생 하고 집에 갈래?")
-            })
-        .onChange(of: wordManager.studyStateDeck) { _, newDeck in
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    isPopupPresented = .exitConfirmation
+                } label: {
+                    Image(systemName: "chevron.backward")
+                }
+            }
+        }
+        .onChange(of: wordManager.studyStateDeck) {
+            _,
+            newDeck in
             if newDeck.isEmpty {
-                showCompletionModal = true
+                isPopupPresented = .studyCompletion(
+                    studiedCount: 30,
+                    uncertainCount: 10
+                )
             }
         }
     }

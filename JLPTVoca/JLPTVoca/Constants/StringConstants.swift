@@ -22,3 +22,7 @@ enum DetailChart {
 enum SpeechBubble {
     static let main = "단어의 시작은 집중력!"
 }
+
+enum QuitStudy {
+    static let title = "오늘의 단어 학습을 마쳤어요!"
+}
