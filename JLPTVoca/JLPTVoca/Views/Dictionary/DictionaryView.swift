@@ -10,23 +10,22 @@ import SwiftUI
 struct DictionaryView: View {
     @Environment(WordManager.self) private var wordManager
     
+    let type: DictionaryType
+    
     var body: some View {
-        NavigationStack {
-            List(wordManager.studyStateDeck) { state in
-                VStack(alignment: .leading) {
-                    Text(state.word.plainJapanese)
-                        .font(.headline)
-                    Text(state.word.korean)
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-            }
-            .navigationTitle("JLPT Dictionary")
-        }
+        DictionaryWordCard(
+            japanese: "四字熟語",
+            furigana: "よじじゅくご",
+            korean: "사자성어",
+            level: 111,
+            maturity: 2222222,
+            isFavorite: true
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 15)
+            .stroke(
+                Color.black50,
+                lineWidth: 1
+            ))
     }
-}
-
-#Preview {
-    DictionaryView()
-        .environment(WordManager())
 }

@@ -20,7 +20,7 @@ struct ContentView: View {
                     Label("학습", systemImage: "house.fill")
                 }
             
-            DictionaryView()
+            SelectDictionaryView()
                 .tabItem {
                     Label("사전", systemImage: "book.fill")
                 }
