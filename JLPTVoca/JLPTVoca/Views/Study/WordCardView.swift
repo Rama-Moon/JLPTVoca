@@ -91,13 +91,9 @@ struct WordCardView: View {
             
             VStack {
                 HStack {
-                    Button(action: {
-                        isFavorited.toggle()
-                    }) {
-                        Image(isFavorited ? "favouriteIconActivated" : "favouriteIconInactivated")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                    }
+                    FavoriteButton(
+                        isFavorited: isFavorited,
+                        action: { })
                     .padding(24)
                     
                     Spacer()

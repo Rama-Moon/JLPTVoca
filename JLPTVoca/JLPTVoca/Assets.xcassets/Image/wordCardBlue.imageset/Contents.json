@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "wordCardBlue.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wordCardBlue.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
