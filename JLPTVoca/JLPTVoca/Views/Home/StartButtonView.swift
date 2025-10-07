@@ -12,17 +12,11 @@ struct StartButtonView: View {
     @Environment(NavigationManager<HomeRoute>.self) private var router
     
     var body: some View {
-        Button(action: {
-            wordManager.prepareSession()
-            router.navigate(.wordStudy)
-        }) {
+        Button(action: { router.navigate(.wordStudy) }) {
             HStack {
                 Image(.bookIcon)
                     .resizable()
-                    .frame(
-                        width: 27,
-                        height: 27
-                    )
+                    .frame(width: 27, height: 27)
                 
                 Text("단어 외우러 가기")
                     .font(.h1)
@@ -34,10 +28,4 @@ struct StartButtonView: View {
             .cornerRadius(50)
         }
     }
-}
-
-#Preview {
-    StartButtonView()
-        .environment(WordManager())
-        .environment(NavigationManager<HomeRoute>())
 }

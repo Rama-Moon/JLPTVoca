@@ -9,30 +9,22 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Query private var words: [Word]
-    @Environment(\.modelContext) private var context
-    @State private var wordManager = WordManager()
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding: Bool = false
+    @AppStorage("isDataPreloaded") private var isDataPreloaded: Bool = false
+    @Environment(WordManager.self) private var wordManager
     
     var body: some View {
-        TabView {
-            HomeView()
-                .tabItem {
-                    Label("학습", systemImage: "house.fill")
-                }
-            
-            SelectDictionaryView()
-                .tabItem {
-                    Label("사전", systemImage: "book.fill")
-                }
-            
-            SettingView()
-                .tabItem {
-                    Label("설정", systemImage: "gearshape.fill")
-                }
+        Group {
+            if !hasCompletedOnboarding {
+                OnboardingView(hasCompletedOnboarding: $hasCompletedOnboarding)
+            } else if !isDataPreloaded {
+                ProgressView("단어 데이터를 준비 중입니다..")
+            } else {
+                MainTabView()
+            }
         }
-        .environment(wordManager)
-        .onAppear() {
-            wordManager.setContext(context: context)
+        .onAppear {
+            wordManager.prepareInitialData()
         }
     }
 }

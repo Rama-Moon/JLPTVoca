@@ -11,7 +11,7 @@ struct HomeView: View {
     @Environment(WordManager.self) private var wordManager
     @State private var router = NavigationManager<HomeRoute>()
     
-    @State private var selectedLevel: Int = 3
+    @AppStorage("targetLevel") private var selectedLevel: Int = 5
     @State private var pendingLevel: Int?
     @State private var isLevelSelectorExpanded = false
     @State private var isDetailChartEnabled = false
@@ -30,6 +30,7 @@ struct HomeView: View {
                     Spacer().frame(height: 8)
                     
                     StudyDashboardView(
+                        selectedLevel: selectedLevel,
                         isDetailChartEnabled: $isDetailChartEnabled,
                         isLevelSelectorExpanded: $isLevelSelectorExpanded
                     )
@@ -96,9 +97,4 @@ struct HomeView: View {
         }
         .environment(router)
     }
-}
-
-#Preview {
-    HomeView()
-        .environment(WordManager())
 }

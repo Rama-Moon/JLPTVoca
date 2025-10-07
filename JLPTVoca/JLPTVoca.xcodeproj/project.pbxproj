@@ -21,15 +21,23 @@
 		216132B32E71D3C300DE17B7 /* JLPTVocaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JLPTVocaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		218805562E7E60E000F5F235 /* Exceptions for "JLPTVoca" folder in "JLPTVoca" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 214FEB5F2E5E320300C87957 /* JLPTVoca */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		214FEB622E5E320300C87957 /* JLPTVoca */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				218805562E7E60E000F5F235 /* Exceptions for "JLPTVoca" folder in "JLPTVoca" target */,
+			);
 			path = JLPTVoca;
-			sourceTree = "<group>";
-		};
-		216132B42E71D3C300DE17B7 /* JLPTVocaUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = JLPTVocaUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -56,7 +64,6 @@
 			isa = PBXGroup;
 			children = (
 				214FEB622E5E320300C87957 /* JLPTVoca */,
-				216132B42E71D3C300DE17B7 /* JLPTVocaUITests */,
 				214FEB612E5E320300C87957 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -107,9 +114,6 @@
 			);
 			dependencies = (
 				216132B82E71D3C300DE17B7 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				216132B42E71D3C300DE17B7 /* JLPTVocaUITests */,
 			);
 			name = JLPTVocaUITests;
 			packageProductDependencies = (

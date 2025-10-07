@@ -1,5 +1,5 @@
 //
-//  CircularProgressView.swift
+//  WordChart.swift
 //  JLPTVoca
 //
 //  Created by Rama on 8/27/25.
@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct CircularProgressView: View {
-    let current: Int
-    let total: Int
+struct WordChart: View {
+    let studiedCount: Int
+    let totalCount: Int
     
     var body: some View {
-        var progress: Double { Double(current) / Double(total) }
+        var progress: Double { Double(studiedCount) / Double(totalCount) }
         var percentage: Int { Int(progress * 100) }
         
         ZStack {
@@ -36,15 +36,10 @@ struct CircularProgressView: View {
                     .font(.b1)
                     .foregroundStyle(Color.coral50)
 
-                Text("\(current) / \(total)")
+                Text("\(studiedCount) / \(totalCount)")
                     .font(.b3)
                     .foregroundStyle(Color.black50)
             }
         }
     }
-}
-
-#Preview {
-    CircularProgressView(current: 1000, total: 3000)
-        .frame(width: 210, height: 210)
 }

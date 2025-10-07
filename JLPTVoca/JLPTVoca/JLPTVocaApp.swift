@@ -10,17 +10,20 @@ import SwiftData
 
 @main
 struct JLPTVocaApp: App {
+    let sharedModelConatainer: ModelContainer
+    let wordManager: WordManager
+    
+    init() {
+        let container = try! ModelContainer(for: Word.self, StudyState.self)
+        self.sharedModelConatainer = container
+        self.wordManager = WordManager(modelContainer: container)
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Word.self, onSetup: { result in
-            switch result {
-            case .success(let container):
-                DataLoader.loadInitialData(context: container.mainContext)
-            case .failure(let error):
-                fatalError("\(error.localizedDescription)")
-            }
-        })
+        .modelContainer(sharedModelConatainer)
+        .environment(wordManager)
     }
 }
