@@ -13,7 +13,7 @@ final class StudyState {
     @Relationship var word: Word
     
     var maturityState: Int = 0
-    var reviewDate: Date = Date()
+    var reviewDate: Date? = nil
     var isFavorite: Bool = false
     
     init(word: Word) {
