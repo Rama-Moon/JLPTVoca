@@ -10,8 +10,8 @@ import SwiftUI
 enum PopupType: Equatable {
     case exitConfirmation
     case studyCompletion(
-        studiedCount: Int,
-        uncertainCount: Int
+        studiedCount: Int = 0,
+        uncertainCount: Int = 0
     )
     
     var title: String {
@@ -38,24 +38,6 @@ enum PopupType: Equatable {
             return "지금 중단하면 학습한 내용이 저장되지 않아요"
         case .studyCompletion(let studiedCount, let uncertainCount):
             return "외운 단어: \(studiedCount)\n학습할 단어: \(uncertainCount)"
-        }
-    }
-    
-    var primaryButtonTitle: String {
-        switch self {
-        case .exitConfirmation:
-            return "이어서 하기"
-        case .studyCompletion(_, _):
-            return "홈으로 돌아가기"
-        }
-    }
-    
-    var primaryButtonRole: ButtonRole? {
-        switch self {
-        case .exitConfirmation:
-            return .destructive
-        case .studyCompletion(_, _):
-            return .none
         }
     }
 }
