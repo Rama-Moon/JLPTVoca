@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct HomeView: View {
     @Environment(WordManager.self) private var wordManager
+    @Environment(\.modelContext) private var modelContext
     @State private var router = NavigationManager<HomeRoute>()
     
     @AppStorage("targetLevel") private var selectedLevel: Int = 5
+    @AppStorage("dailyGoal") private var dailyGoal: Int = 5
+    
     @State private var pendingLevel: Int?
     @State private var isLevelSelectorExpanded = false
     @State private var isDetailChartEnabled = false
