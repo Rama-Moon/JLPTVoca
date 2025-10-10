@@ -7,87 +7,68 @@
 
 import SwiftUI
 import SwiftData
-import OSLog
 
 @Observable
+@MainActor
 final class WordManager {
-    var studyStateDeck: [StudyState] = []
+    let modelContainer: ModelContainer
     
-    private var context: ModelContext?
-    
-    func setContext(context: ModelContext) {
-        self.context = context
+    private var mainContext: ModelContext {
+        modelContainer.mainContext
     }
     
-    func prepareSession() {
-        guard context != nil else { return }
-        
-        let reviewableStates = fetchReviewableStates()
-        let newWords = fetchNewWords(limit: 20) //TODO: RawVal 수정, 사용자 학습 목표량으로 수정
-        let newWordStates = createStates(for: newWords)
-        
-        self.studyStateDeck = (reviewableStates + newWordStates).shuffled()
+    init(modelContainer: ModelContainer) {
+        self.modelContainer = modelContainer
     }
     
-    private func fetchData<T: PersistentModel>(with descriptor: FetchDescriptor<T>) -> [T] {
-        guard let context else { return [] }
+    func prepareInitialData() {
+        let isPreloaded = UserDefaults.standard.bool(forKey: "isDataPreloaded")
+        guard !isPreloaded else { return }
+        
+        Task(priority: .background) {
+            do {
+                guard let url = Bundle.main.url(forResource: "words", withExtension: "json") else {
+                    print("@Log - Failed to find json file")
+                    return
+                }
+                let data = try Data(contentsOf: url)
+                let words = try JSONDecoder().decode([Word].self, from: data)
+                
+                let backgroundContext = ModelContext(modelContainer)
+                
+                for word in words {
+                    backgroundContext.insert(word)
+                }
+                
+                try backgroundContext.save()
+                
+                await MainActor.run {
+                    UserDefaults.standard.set(true, forKey: "isDataPreloaded")
+                    print("@Log - Preload succeed")
+                }
+            } catch {
+                print("@Log - Failed to preload")
+            }
+        }
+    }
+    
+    func updateStudyState(
+        for state: StudyState,
+        direction: CardSwipeDirection,
+        shouldSave: Bool = true
+    ) {
+        if direction == .left {
+            state.maturityState = 1
+        } else {
+            state.maturityState = min(state.maturityState + 1, 5)
+        }
+        
+        updateNextReviewDate(for: state)
         
         do {
-            return try context.fetch(descriptor)
+            try mainContext.save()
         } catch {
-            print("@Log - \(error.localizedDescription)")
-            return []
-        }
-    }
-    
-    private func fetchReviewableStates() -> [StudyState] {
-        let now = Date()
-        let predicate = #Predicate<StudyState> { $0.reviewDate <= now }
-        let descriptor = FetchDescriptor<StudyState>(predicate: predicate)
-        
-        return fetchData(with: descriptor)
-    }
-    
-    func fetchNewWords(limit: Int) -> [Word] {
-        let predicate = #Predicate<Word> { $0.state == nil }
-        var descriptor = FetchDescriptor<Word>(predicate: predicate)
-        descriptor.fetchLimit = limit
-        
-        return fetchData(with: descriptor)
-    }
-    
-    private func createStates(for words: [Word]) -> [StudyState] {
-        guard let context else { return [] }
-        
-        return words.map { newWord in
-            let newState = StudyState(word: newWord)
-            context.insert(newState)
-            return newState
-        }
-    }
-    
-    func onCardSwipe(
-        id: UUID,
-        direction: CardSwipeDirection
-    ) {
-        guard let swipedState = studyStateDeck.first(where: { $0.word.id == id }) else {
-            return
-        }
-        
-        if direction == .left {
-            swipedState.maturityState = min(swipedState.maturityState + 1, 5)
-        } else {
-            swipedState.maturityState = 1
-        }
-        updateNextReviewDate(for: swipedState)
-        studyStateDeck.removeAll { $0.word.id == id }
-        
-        if studyStateDeck.isEmpty {
-            do {
-                try context?.save()
-            } catch {
-                print("@Log - \(error.localizedDescription)")
-            }
+            print("@Log - Failed to save context")
         }
     }
     

@@ -14,8 +14,3 @@ struct SettingView: View {
         Text("Setting View")
     }
 }
-
-#Preview {
-    SettingView()
-        .environment(WordManager())
-}

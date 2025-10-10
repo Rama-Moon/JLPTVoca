@@ -1,11 +1,15 @@
 import SwiftUI
 
-struct WordDeckView: View {
-    @Environment(WordManager.self) private var wordManager
+import SwiftUI
 
+struct WordDeckView: View {
+    @Binding var deck: [StudyState]
+    
+    let onSwipe: (StudyState, CardSwipeDirection) -> Void
+    
     var body: some View {
         ZStack {
-            ForEach(wordManager.studyStateDeck) { state in
+            ForEach(deck) { state in
                 WordCardView(
                     id: state.word.id,
                     japanese: state.word.plainJapanese,
@@ -13,16 +17,11 @@ struct WordDeckView: View {
                     korean: state.word.korean,
                     koreanExample: state.word.koreanExample,
                     japaneseExample: state.word.japaneseExample
-                ) { id, direction in
-                    wordManager.onCardSwipe(id: id, direction: direction)
+                ) { _, direction in
+                    onSwipe(state, direction)
                 }
                 .frame(width: 345, height: 553)
             }
         }
     }
-}
-
-#Preview {
-    WordDeckView()
-        .environment(WordManager())
 }

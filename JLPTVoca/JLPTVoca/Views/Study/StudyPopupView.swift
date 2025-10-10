@@ -39,9 +39,10 @@ struct StudyPopupView: View {
                     .padding(.bottom, 32)
                 
                 HStack(spacing: 25) {
-                    if let cancelAction = cancelAction {
+                    if popupType == .exitConfirmation {
+                        
                         Button(action: {
-                            cancelAction()
+                            completeAction()
                         }) {
                             Text("나가기")
                                 .padding(.horizontal, 20)
@@ -51,24 +52,38 @@ struct StudyPopupView: View {
                         }
                         .overlay(
                             RoundedRectangle(cornerRadius: 15)
-                            .stroke(
-                                Color.black50,
-                                lineWidth: 1
-                            )
+                                .stroke(
+                                    Color.black50,
+                                    lineWidth: 1
+                                )
                         )
+                        
+                        
+                        Button(action: {
+                            cancelAction?()
+                        }) {
+                            Text("이어서 하기")
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .font(.b2)
+                                .foregroundStyle(Color.white0)
+                        }
+                        .background(Color.coral50)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                        
+                    } else if case .studyCompletion = popupType {
+                        Button(action: {
+                            completeAction()
+                        }) {
+                            Text("완료하기")
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .font(.b2)
+                                .foregroundStyle(Color.white0)
+                        }
+                        .background(Color.coral50)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
                     }
-                    
-                    Button(action: {
-                        completeAction()
-                    }) {
-                        Text(popupType.primaryButtonTitle)
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 16)
-                            .font(.b2)
-                            .foregroundStyle(Color.white0)
-                    }
-                    .background(Color.coral50)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
                 }
             }
             .padding(30)
