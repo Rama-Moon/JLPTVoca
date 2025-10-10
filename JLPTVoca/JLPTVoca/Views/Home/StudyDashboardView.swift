@@ -72,14 +72,14 @@ struct StudyDashboardView: View {
     }
     
     private var chartData: [ChartData] {
-        return maturityCounts.map { maturityLevel, count in
-            ChartData(
+        return Maturity.allCases.map { maturityLevel in
+            let count = maturityCounts[maturityLevel] ?? 0
+            return ChartData(
                 label: maturityLevel.title,
                 count: count,
                 color: maturityLevel.color
             )
         }
-        .sorted { $0.label < $1.label }
     }
     
     var body: some View {
